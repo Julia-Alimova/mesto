@@ -1,0 +1,8 @@
+.element {
+  max-width: 100%;
+  border-radius: 10px;
+  background-color: #FFF;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
