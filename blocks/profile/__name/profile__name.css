@@ -1,9 +1,7 @@
 .profile__name {
-  margin: 0;
+  margin: 0 18px 0 0;
   padding: 0;
-  height: 1em;
-  display: inline;
-  vertical-align: sub;
+  max-width: 294px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
