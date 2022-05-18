@@ -1,0 +1,14 @@
+.edit-form {
+  width: 430px;
+  height: 330px;
+  background-color: #FFF;
+  border-radius: 10px;
+  position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .edit-form {
+    width: 282px;
+    height: 322px;
+  }
+}

@@ -1,0 +1,15 @@
+.form {
+  margin: 0 auto;
+  padding: 34px 0 37px;
+  width: calc(100% - 72px);
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 767px) {
+  .form {
+    margin: 0 auto;
+    padding: 25px 0;
+    width: calc(100% - 44px);
+  }
+}
