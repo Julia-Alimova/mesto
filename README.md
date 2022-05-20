@@ -9,4 +9,4 @@
 2. Grid Layout.
 3. Изменение данных пользователя при помощи Java Script.
 
-Ссылка на github pages:
+Ссылка на github pages: https://julia-alimova.github.io/mesto/
