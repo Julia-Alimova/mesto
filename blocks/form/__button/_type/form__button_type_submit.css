@@ -14,8 +14,6 @@
   opacity: .8;
 }
 
-
-
 @media screen and (max-width: 767px) {
   .form__button_type_submit {
     height: 46px;

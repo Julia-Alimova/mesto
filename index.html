@@ -18,11 +18,14 @@
   <main class="content">
     <section class="profile">
       <img src="./images/profile-photo.svg" alt="Фото профиля" class="profile__avatar">
-      <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
+      <div class="profile__main">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <p class="profile__description">Исследователь океана</p>
+        </div>
         <button class="profile__edit-button"></button>
-        <p class="profile__description">Исследователь океана</p>
       </div>
+
       <button class="profile__add-button"></button>
     </section>
     <section class="elements">
@@ -30,7 +33,8 @@
         <img src="./images/karachaevo.jpg" alt="Замок в горах" class="element__photo">
         <div class="element__description">
           <p class="element__title">Карачаевск</p>
-          <svg class="element__like" width="22" height="19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="element__like element__like_type_active" width="22" height="19" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
               fill="#000" />
@@ -41,7 +45,7 @@
         <img src="./images/elbrus.jpg" alt="Гора Эльбрус вдалеке" class="element__photo">
         <div class="element__description">
           <p class="element__title">Гора Эльбрус</p>
-          <svg class="element__like" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="element__like element__like_type_active" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
               fill="#000" />
@@ -52,7 +56,7 @@
         <img src="./images/dombai.jpg" alt="Гора на фоне леса" class="element__photo">
         <div class="element__description">
           <p class="element__title">Домбай</p>
-          <svg class="element__like" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="element__like element__like_type_active" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
               fill="#000" />
@@ -63,7 +67,7 @@
         <img src="./images/peru.jpg" alt="Мачу Пикчу" class="element__photo">
         <div class="element__description">
           <p class="element__title">Перу</p>
-          <svg class="element__like" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="element__like element__like_type_active" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
               fill="#000" />
@@ -74,7 +78,7 @@
         <img src="./images/mexico.jpg" alt="Скалы" class="element__photo">
         <div class="element__description">
           <p class="element__title">Мексика</p>
-          <svg class="element__like" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="element__like element__like_type_active" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
               fill="#000" />
@@ -85,7 +89,7 @@
         <img src="./images/new-zealand.jpg" alt="Гора Таранаки" class="element__photo">
         <div class="element__description">
           <p class="element__title">Новая Зеландия</p>
-          <svg class="element__like" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="element__like element__like_type_active" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20.3 9.786c2.267-2.243 2.267-5.884 0-8.104-2.269-2.243-5.951-2.243-8.22 0l-1.1 1.11-1.1-1.088C7.612-.56 3.93-.56 1.684 1.682A5.657 5.657 0 0 0 0 5.745a5.75 5.75 0 0 0 1.684 4.063L10.98 19l9.32-9.214ZM1.436 5.745c0-1.155.45-2.22 1.28-3.02A4.33 4.33 0 0 1 5.771 1.46c1.1 0 2.2.422 3.054 1.265l2.155 2.11 2.156-2.132c1.684-1.665 4.446-1.665 6.108 0 .808.8 1.28 1.865 1.28 3.02 0 1.154-.45 2.22-1.28 3.02l-8.264 8.192-8.263-8.17c-.808-.822-1.28-1.888-1.28-3.02Z"
               fill="#000" />
@@ -97,16 +101,19 @@
   <footer class="footer">
     <p class="footer__copyright" lang="en">&copy; 2022 Mesto Russia</p>
   </footer>
-  <section class="edit-form">
-    <form class="form" action="#">
-      <h2 class="form__title">Редактировать профиль</h2>
-      <input class="form__item form__item_el_name" type="text" name="username" placeholder="Жак-Ив Кусто">
-      <input class="form__item form__item_el_description" type="text" name="user-info"
-        placeholder="Исследователь океана">
-      <button class=" form__button form__button_type_submit">Сохранить</button>
-      <button class="form__button form__button_type_exit"></button>
+  <section class="popup">
+    <form class="form" action="">
+      <div class="form__content">
+        <h2 class="form__title">Редактировать профиль</h2>
+        <input class="form__item form__item_el_name" type="text" name="username" placeholder="Имя">
+        <input class="form__item form__item_el_description" type="text" name="user-info"
+          placeholder="Расскажите о себе">
+        <button type="submit" class=" form__button form__button_type_submit">Сохранить</button>
+        <button type="button" class="form__button form__button_type_exit"></button>
+      </div>
     </form>
   </section>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
