@@ -1,9 +1,11 @@
 .header {
   max-width: calc(100% - 400px);
   margin: 0 auto;
-  padding: 45px 0 36.25px;
+  padding-top: 45px;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #545454;
+  box-sizing: content-box;
 }
 
 @media screen and (max-width: 1024px) {
@@ -15,6 +17,6 @@
 @media screen and (max-width: 767px) {
   .header {
     max-width: 100%;
-    padding: 28px 0 38px;
+    padding-top: 28px;
   }
 }

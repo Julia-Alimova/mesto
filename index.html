@@ -11,62 +11,61 @@
 <body class="page">
   <header class="header">
     <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
-    <img src="./images/line.svg" alt="Линия" class="header__line">
   </header>
   <main class="content">
     <section class="profile">
       <img src="./images/profile-photo.svg" alt="Фото профиля" class="profile__avatar">
       <div class="profile__main">
-        <div class="profile__info">
+        <div class="profile__main-title">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__description">Исследователь океана</p>
+          <button class="profile__edit-button" type="button"></button>
         </div>
-        <button class="profile__edit-button"></button>
+        <p class="profile__description">Исследователь океана</p>
       </div>
 
-      <button class="profile__add-button"></button>
+      <button class="profile__add-button" type="button">
     </section>
     <section class="elements">
       <div class="element">
         <img src="./images/karachaevo.jpg" alt="Замок в горах" class="element__photo">
         <div class="element__description">
-          <p class="element__title">Карачаевск</p>
-          <img class="element__like element__like_type_active" src="./images/like.svg" alt="Лайк">
+          <h2 class="element__title">Карачаевск</h2>
+          <button class="element__like element__like_type_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/elbrus.jpg" alt="Гора Эльбрус вдалеке" class="element__photo">
         <div class="element__description">
-          <p class="element__title">Гора Эльбрус</p>
-          <img class="element__like element__like_type_active" src="./images/like.svg" alt="Лайк">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button class="element__like element__like_type_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/dombai.jpg" alt="Гора на фоне леса" class="element__photo">
         <div class="element__description">
-          <p class="element__title">Домбай</p>
-          <img class="element__like element__like_type_active" src="./images/like.svg" alt="Лайк">
+          <h2 class="element__title">Домбай</h2>
+          <button class="element__like element__like_type_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/peru.jpg" alt="Мачу Пикчу" class="element__photo">
         <div class="element__description">
-          <p class="element__title">Перу</p>
-          <img class="element__like element__like_type_active" src="./images/like.svg" alt="Лайк">
+          <h2 class="element__title">Перу</h2>
+          <button class="element__like element__like_type_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/mexico.jpg" alt="Скалы" class="element__photo">
         <div class="element__description">
-          <p class="element__title">Мексика</p>
-          <img class="element__like element__like_type_active" src="./images/like.svg" alt="Лайк">
+          <h2 class="element__title">Мексика</h2>
+          <button class="element__like element__like_type_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/new-zealand.jpg" alt="Гора Таранаки" class="element__photo">
         <div class="element__description">
-          <p class="element__title">Новая Зеландия</p>
-          <img class="element__like element__like_type_active" src="./images/like.svg" alt="Лайк">
+          <h2 class="element__title">Новая Зеландия</h2>
+          <button class="element__like element__like_type_active" type="button"></button>
         </div>
       </div>
     </section>
@@ -75,7 +74,7 @@
     <p class="footer__copyright" lang="en">&copy; 2022 Mesto Russia</p>
   </footer>
   <section class="popup">
-    <form class="form" action="#">
+    <form class="form" action="#" name="edit-form">
       <div class="form__content">
         <h2 class="form__title">Редактировать профиль</h2>
         <input class="form__item form__item_el_name" type="text" name="username" placeholder="Имя">

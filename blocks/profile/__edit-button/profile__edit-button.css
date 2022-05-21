@@ -1,5 +1,5 @@
 .profile__edit-button {
-  margin: 17px 0 0 18px;
+  margin: 16px 0 0 18px;
   width: 24px;
   height: 24px;
   padding: 0;
@@ -24,7 +24,7 @@
     height: 18px;
     position: absolute;
     right: 19px;
-    bottom: 122px;
+    bottom: 116px;
     background-size: 7.5px;
   }
 }

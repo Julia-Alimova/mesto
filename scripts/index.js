@@ -7,20 +7,31 @@ const nameFieldElement = document.querySelector('.form__item_el_name');
 const infoFieldElement = document.querySelector('.form__item_el_description');
 const formElement = document.querySelector('.form');
 
+function openPopup(popupElement) {
+  popupElement.classList.add('popup_opened')
+}
+
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened')
+}
+
+function submitPopup(popupElement) {
+  userName.textContent = nameFieldElement.value;
+  userInfo.textContent = infoFieldElement.value;
+  closePopup(popup)
+}
 
 editButton.addEventListener('click', function () {
-  popup.classList.add('popup_opened')
+  openPopup(popup)
   nameFieldElement.value = userName.textContent;
   infoFieldElement.value = userInfo.textContent;
 })
 
 popupCloseButton.addEventListener('click', function () {
-  popup.classList.remove('popup_opened')
+  closePopup(popup)
 })
 
 formElement.addEventListener('submit', function (event) {
   event.preventDefault()
-  userName.textContent = nameFieldElement.value;
-  userInfo.textContent = infoFieldElement.value;
-  popup.classList.remove('popup_opened')
+  submitPopup(popup)
 })

@@ -8,6 +8,7 @@
   line-height: 21px;
   font-weight: 400;
   cursor: pointer;
+  border: 0;
 }
 
 .form__button_type_submit:hover {
