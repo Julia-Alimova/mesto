@@ -7,31 +7,23 @@ const nameFieldElement = document.querySelector('.form__item_el_name');
 const infoFieldElement = document.querySelector('.form__item_el_description');
 const formElement = document.querySelector('.form');
 
-function openPopup(popupElement) {
-  popupElement.classList.add('popup_opened')
-}
-
-function closePopup(popupElement) {
-  popupElement.classList.remove('popup_opened')
-}
-
-function submitPopup(popupElement) {
-  userName.textContent = nameFieldElement.value;
-  userInfo.textContent = infoFieldElement.value;
-  closePopup(popup)
-}
-
-editButton.addEventListener('click', function () {
-  openPopup(popup)
+function openPopup() {
+  popup.classList.add('popup_opened')
   nameFieldElement.value = userName.textContent;
   infoFieldElement.value = userInfo.textContent;
-})
+}
 
-popupCloseButton.addEventListener('click', function () {
-  closePopup(popup)
-})
+function closePopup() {
+  popup.classList.remove('popup_opened')
+}
 
-formElement.addEventListener('submit', function (event) {
+function submitPopup(event) {
   event.preventDefault()
-  submitPopup(popup)
-})
+  userName.textContent = nameFieldElement.value;
+  userInfo.textContent = infoFieldElement.value;
+  closePopup()
+}
+
+editButton.addEventListener('click', openPopup)
+popupCloseButton.addEventListener('click', closePopup)
+formElement.addEventListener('submit', submitPopup)
