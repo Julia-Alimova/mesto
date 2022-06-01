@@ -1,4 +1,4 @@
-.element__description {
+.card__description {
   max-width: 100%;
   margin: 0;
   padding: 26px 20px 26px 21px;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .element__description {
+  .card__description {
     padding: 24px 20px 26px 18px;
   }
 }

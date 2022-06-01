@@ -24,8 +24,8 @@
       </div>
       <button class="profile__add-button" type="button"></button>
     </section>
-    <section class="elements">
-      <div class="element">
+    <section class="cards">
+      <!-- <div class="element">
         <img src="./images/karachaevo.jpg" alt="Замок в горах" class="element__photo">
         <div class="element__description">
           <h2 class="element__title">Карачаевск</h2>
@@ -66,20 +66,42 @@
           <h2 class="element__title">Новая Зеландия</h2>
           <button class="element__like element__like_type_active" type="button"></button>
         </div>
-      </div>
+      </div> -->
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright" lang="en">&copy; 2022 Mesto Russia</p>
   </footer>
-  <section class="popup">
-    <form class="form" action="#" name="edit-form">
+  <section class="popup popup_type_edit">
+    <form class="form edit-form" action="#" name="edit-form">
       <div class="form__content">
         <h2 class="form__title">Редактировать профиль</h2>
         <input class="form__item form__item_el_name" type="text" name="username" placeholder="Имя">
         <input class="form__item form__item_el_description" type="text" name="user-info"
           placeholder="Расскажите о себе">
-        <button type="submit" class=" form__button form__button_type_submit">Сохранить</button>
+        <button type="submit" class="form__button form__button_type_submit">Сохранить</button>
+        <button type="button" class="form__button form__button_type_exit"></button>
+      </div>
+    </form>
+  </section>
+
+  <template class="card">
+    <div class="card__element">
+      <img src="#" class="card__photo">
+      <div class="card__description">
+        <h2 class="card__title"></h2>
+        <button class="card__like card__like_type_active" type="button"></button>
+      </div>
+    </div>
+  </template>
+
+  <section class="popup popup_type_add">
+    <form class="form add-form" action="#" name="add-form">
+      <div class="form__content">
+        <h2 class="form__title">Новое место</h2>
+        <input class="form__item form__item_el_place" type="text" name="place" placeholder="Название">
+        <input class="form__item form__item_el_link" type="text" name="place-link" placeholder="Ссылка на картинку">
+        <button type="submit" class="form__button form__button_type_submit">Создать</button>
         <button type="button" class="form__button form__button_type_exit"></button>
       </div>
     </form>

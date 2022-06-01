@@ -1,4 +1,4 @@
-.elements {
+.cards {
   max-width: calc(100% - 400px);
   margin: 0 auto;
   padding: 47.25px 0 67px;
@@ -9,13 +9,13 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .elements {
+  .cards {
     max-width: calc(100% - 180px);
   }
 }
 
 @media screen and (max-width: 767px) {
-  .elements {
+  .cards {
     max-width: calc(100% - 38px);
     padding: 36px 0 48px;
     gap: 20px;
