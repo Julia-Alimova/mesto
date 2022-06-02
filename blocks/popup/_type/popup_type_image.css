@@ -1,0 +1,14 @@
+.popup_type_image {
+  background-color: transparent;
+}
+
+.popup_type_image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: .9;
+}

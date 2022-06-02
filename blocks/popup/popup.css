@@ -7,13 +7,13 @@
   bottom: 0;
   opacity: 0;
   visibility: hidden;
-  transition: visibility .5s, opacity .5s;
   z-index: 2;
 }
 
 .popup_opened {
   visibility: visible;
   opacity: 1;
+  transition: visibility .3s, opacity .7s;
 
 }
 

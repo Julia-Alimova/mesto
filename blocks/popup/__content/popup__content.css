@@ -1,0 +1,6 @@
+.popup__content {
+  position: relative;
+  margin: auto;
+  flex-direction: column;
+  z-index: 1;
+}
