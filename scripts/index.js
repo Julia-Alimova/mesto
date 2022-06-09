@@ -1,22 +1,25 @@
 const userName = document.querySelector('.profile__name');                               // имя пользователя
 const userInfo = document.querySelector('.profile__description');                        // описание
-const editButton = document.querySelector('.profile__edit-button');                      // кнопка редактирования
-const addButton = document.querySelector('.profile__add-button');                        // кнопка добавления
+const buttonEdit = document.querySelector('.profile__edit-button');                      // кнопка редактирования
+const buttonAdd = document.querySelector('.profile__add-button');                        // кнопка добавления
 
 const cards = document.querySelector('.cards');                                          // место для карточек
 
-const addPopup = document.querySelector('.popup_type_add');                              // Попап добавления
-const addFormElement = document.querySelector('.add-form');                              // форма добавления
-const placeInputElement = addPopup.querySelector('.form__item_el_place');                 // инпут место
-const linkInputElement = addPopup.querySelector('.form__item_el_link');                  // инпут ссылка
-const addPopupCloseButton = addPopup.querySelector('.form__button_type_exit');            // крестик форма добавления
+const cardTemplateElement = document.querySelector('.card').content.querySelector('.card__element'); // темплейт
 
-const editPopup = document.querySelector('.popup_type_edit');                            // попап редактирования
-const editFormElement = document.querySelector('.edit-form');                            // форма редактирования
+
+const popupAdd = document.querySelector('.popup_type_add');                              // Попап добавления
+const formElementAdd = document.querySelector('.add-form');                              // форма добавления
+const placeInputElement = popupAdd.querySelector('.form__item_el_place');                 // инпут место
+const linkInputElement = popupAdd.querySelector('.form__item_el_link');                  // инпут ссылка
+const popupAddCloseButton = popupAdd.querySelector('.form__button_type_exit');            // крестик форма добавления
+
+const popupEdit = document.querySelector('.popup_type_edit');                            // попап редактирования
+const formElementEdit = document.querySelector('.edit-form');                            // форма редактирования
 
 const nameInputElement = document.querySelector('.form__item_el_name');                  // инпут имя
 const infoInputlement = document.querySelector('.form__item_el_description');            // инпут описание
-const editPopupCloseButton = editPopup.querySelector('.form__button_type_exit');         // крестик форма редактирования
+const popupEditCloseButton = popupEdit.querySelector('.form__button_type_exit');         // крестик форма редактирования
 
 const imagePopup = document.querySelector('.popup_type_image');                          // попап с картинкой
 const imagePopupCloseButton = imagePopup.querySelector('.popup__button');                // крестик попап с картинкой
@@ -27,27 +30,26 @@ const getCardByEvent = evt => evt.currentTarget.closest('.card__element');
 
 // создание карточки по ссылке и имени
 function createCard(name, link) {
-  const cardTemplateElement = document.querySelector('.card').content;                     // темплейт
-  const cardElement = cardTemplateElement.querySelector('.card__element').cloneNode(true); // карточка
+  const cardElement = cardTemplateElement.cloneNode(true); // карточка
   const deleteItem = cardElement.querySelector('.card__delete');
   const likeItem = cardElement.querySelector('.card__photo');
   const photoItem = cardElement.querySelector('.card__like');
   cardElement.querySelector('.card__photo').src = link;
+  cardElement.querySelector('.card__photo').alt = name;
   cardElement.querySelector('.card__title').textContent = name;
   addCardListener(deleteItem, likeItem, photoItem);
-  cards.append(cardElement);
   return cardElement;
 };
 
-// добавить карточку в начало
-function addCard(name, link) {
+// добавить карточку в конец
+function renderCard(name, link) {
   const card = createCard(name, link);
   cards.prepend(card);
 };
 
 // перебор элементов массива, добавление на страницу
-initialCards.forEach(function (element) {
-  createCard(element.name, element.link);
+initialCards.reverse().forEach(function (element) {
+  renderCard(element.name, element.link);
 });
 
 
@@ -56,9 +58,9 @@ function handleSubmit(evt) {
   evt.preventDefault();
   elementLink = linkInputElement.value;
   elementName = placeInputElement.value;
-  addCard(elementName, elementLink);
-  addFormElement.reset();
-  closePopup(addPopup);
+  renderCard(elementName, elementLink);
+  formElementAdd.reset();
+  closePopup(popupAdd);
 };
 
 // открытие попапа с карточкой
@@ -97,7 +99,7 @@ function submitPopup(evt) {
   evt.preventDefault()
   userName.textContent = nameInputElement.value;
   userInfo.textContent = infoInputlement.value;
-  closePopup(editPopup)
+  closePopup(popupEdit)
 };
 
 // Добавление слушателя события на удаление, открытие картинки, лайк
@@ -108,25 +110,25 @@ function addCardListener(deleteItem, photoItem, likeItem) {
 };
 
 // открытие формы редактирования
-editButton.addEventListener('click', () => {
-  openPopup(editPopup);
+buttonEdit.addEventListener('click', () => {
+  openPopup(popupEdit);
   nameInputElement.value = userName.textContent;
   infoInputlement.value = userInfo.textContent;
 });
 
 // открытие формы добавления
-addButton.addEventListener('click', () => {
-  openPopup(addPopup);
+buttonAdd.addEventListener('click', () => {
+  openPopup(popupAdd);
 });
 
 // закрытие формы редактирования
-editPopupCloseButton.addEventListener('click', () => {
-  closePopup(editPopup)
+popupEditCloseButton.addEventListener('click', () => {
+  closePopup(popupEdit)
 });
 
 // закрытие формы добавления
-addPopupCloseButton.addEventListener('click', () => {
-  closePopup(addPopup)
+popupAddCloseButton.addEventListener('click', () => {
+  closePopup(popupAdd)
 });
 
 // закрытие попапа с картинкой
@@ -135,7 +137,7 @@ imagePopupCloseButton.addEventListener('click', () => {
 });
 
 // сабмит формы редактирования
-editFormElement.addEventListener('submit', submitPopup);
+formElementEdit.addEventListener('submit', submitPopup);
 
 // сабмит формы добавления
-addFormElement.addEventListener('submit', handleSubmit);
+formElementAdd.addEventListener('submit', handleSubmit);
