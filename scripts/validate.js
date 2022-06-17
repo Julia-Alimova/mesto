@@ -1,4 +1,4 @@
-const dataElement = {
+const settings = {
   formSelector: '.form',
   inputSelector: '.form__item',
   submitButtonSelector: '.form__submit',
@@ -7,56 +7,61 @@ const dataElement = {
   errorClass: 'form__item-error_active'
 }
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.form'));
+// включение валидации
+const enableValidation = (element) => {
+  const formList = Array.from(document.querySelectorAll(element.formSelector));
   formList.forEach(function (formElement) {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     })
-    setEventListener(formElement);
+    setEventListener(formElement, settings);
+  })
+};
+
+// создание массива инпутов
+function makeArr (el) {
+  const inputsArray = Array.from(el.querySelectorAll(settings.inputSelector));
+  return inputsArray
+}
+
+// Функция, которая добавляет слушатель
+const setEventListener = (formElement, settings) => {
+  const inputList = makeArr(formElement);
+  const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, settings);
+  inputList.forEach(function (inputElement) {
+    inputElement.addEventListener('input', function () {
+      isValid(formElement, inputElement)
+      toggleButtonState(inputList, buttonElement, settings);
+    })
   })
 };
 
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('form__item_type_error');
+  inputElement.classList.add();
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('form__item-error_active');
-  console.log(123);
+  errorElement.classList.add(settings.errorClass);
 };
 
 // Функция, которая удаляет класс с ошибкой
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('form__item_type_error');
-  errorElement.classList.remove('form__item-error_active');
+  inputElement.classList.remove(settings.inputErrorClass);
+  errorElement.classList.remove(settings.errorClass);
   errorElement.textContent = '';
-  console.log(321);
 };
 
 // Функция, которая проверяет валидность поля
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, settings);
   } else {
-    hideInputError(formElement, inputElement);
-    console.log(456);
+    hideInputError(formElement, inputElement, settings);
   }
 };
 
-// Функция, которая добавляет слушатель
-const setEventListener = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.form__item'));
-  const buttonElement = formElement.querySelector('.form__submit');
-  toggleButtonState(inputList, buttonElement);
-  inputList.forEach(function (inputElement) {
-    inputElement.addEventListener('input', function () {
-      isValid(formElement, inputElement)
-      toggleButtonState(inputList, buttonElement);
-    })
-  })
-};
 
 // Функция, которая находит невалидное поле
 const hasInvalidInput = (inputList) => {
@@ -65,27 +70,32 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
-// Функция, которая переключает кнопку
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('form__submit_inactive');
-    setDisableBtn(buttonElement);
-  } else {
-    buttonElement.classList.remove('form__submit_inactive');
-    removeDisabledBtn(buttonElement);
-  }
-}
-
 // Функция, которая делает неактивной кнопку
-const setDisableBtn = (btn) => {
+const setDisabledBtn = (btn) => {
   btn.setAttribute('disabled', true)
+  btn.classList.add(settings.inactiveButtonClass);
 }
 
 // Функция, которая делает кнопку автивной
 const removeDisabledBtn = (btn) => {
   btn.removeAttribute('disabled')
+  btn.classList.remove(settings.inactiveButtonClass);
 }
 
-enableValidation();
+// Функция, которая переключает кнопку
+const toggleButtonState = (inputList, buttonElement, settings) => {
+  if (hasInvalidInput(inputList)) {
+    setDisabledBtn(buttonElement);
+  } else {
+    removeDisabledBtn(buttonElement);
+  }
+}
 
+// Функция, которая убирает ошибки
+const clearErrors = (formElement, settings) => {
+  makeArr(formElement).forEach(function (inputlement) {
+    hideInputError(formElement, inputlement, settings)
+  })
+}
 
+enableValidation(settings);

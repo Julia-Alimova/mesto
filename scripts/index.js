@@ -88,12 +88,13 @@ function deleteCard(evt) {
 // Открытие попапов
 function openPopup(poupElement) {
   poupElement.classList.add('popup_opened')
-  document.addEventListener('keydown', keyHandler);
+  document.addEventListener('keydown', closeByEscape);
 };
 
 // Закрытие попапов
 function closePopup() {
   const poupElement = document.querySelector('.' + popupIsOpenClassName)
+  document.addEventListener('keydown', closeByEscape);
   poupElement.classList.remove('popup_opened')
 };
 
@@ -102,7 +103,7 @@ function submitPopup(evt) {
   evt.preventDefault()
   userName.textContent = nameInputElement.value;
   userInfo.textContent = infoInputlement.value;
-  closePopup(popupEdit)
+  closePopup()
 };
 
 // Добавление слушателя события на удаление, открытие картинки, лайк
@@ -112,16 +113,26 @@ function addCardListener(deleteItem, photoItem, likeItem) {
   likeItem.addEventListener('click', like);
 };
 
+// Очистка формы
+function clearPopup () {
+  const openedPopup = document.querySelector('.' + popupIsOpenClassName)
+  if (openedPopup.firstElementChild.classList.contains('form')) {
+    openedPopup.querySelector('.form').reset();
+  }
+}
+
 // Функция, которая закрывает попап если клик снаружи
 function detectClickOutside (evt) {
   if (evt.target.classList.contains('popup')) {
+    clearPopup()
     closePopup()
 }
 };
 
 // Функция, которая закрывает попап по клику на esc
-function keyHandler(evt) {
+function closeByEscape(evt) {
   if (evt.key === 'Escape' || evt.key === 'Esc') {
+    clearPopup()
     closePopup()
   }
 };
@@ -132,26 +143,30 @@ buttonEdit.addEventListener('click', () => {
   nameInputElement.value = userName.textContent;
   infoInputlement.value = userInfo.textContent;
   removeDisabledBtn(popupEdit.querySelector('.form__submit'));
+  clearErrors(popupEdit, settings)
 });
 
 // открытие формы добавления
 buttonAdd.addEventListener('click', () => {
+  clearErrors(popupAdd, settings)
+  setDisabledBtn(popupAdd.querySelector('.form__submit'))
   openPopup(popupAdd);
 });
 
 // закрытие формы редактирования
 popupEditCloseButton.addEventListener('click', () => {
-  closePopup(popupEdit)
+  closePopup()
 });
 
 // закрытие формы добавления
 popupAddCloseButton.addEventListener('click', () => {
-  closePopup(popupAdd)
+  clearPopup()
+  closePopup()
 });
 
 // закрытие попапа с картинкой
 imagePopupCloseButton.addEventListener('click', () => {
-  closePopup(imagePopup)
+  closePopup()
 });
 
 // Закрытие попапа по клику снаружи
