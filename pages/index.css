@@ -24,12 +24,19 @@
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__content/form__content.css);
 @import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__field/form__field.css);
 @import url(../blocks/form/__item/form__item.css);
-@import url(../blocks/form/__item/_el/form__item_el_name.css);
+@import url(../blocks/form/__item/_type/form__item_type_error.css);
+@import url(../blocks/form/__item-error/form__item-error.css);
+@import url(../blocks/form/__field/_el/form__field_el_name.css);
+@import url(../blocks/form/__field/_el/form__field_el_description.css);
+@import url(../blocks/form/__field/_el/form__field_el_place.css);
+@import url(../blocks/form/__field/_el/form__field_el_link.css);
+/* @import url(../blocks/form/__item/_el/form__item_el_name.css);
 @import url(../blocks/form/__item/_el/form__item_el_description.css);
 @import url(../blocks/form/__item/_el/form__item_el_place.css);
-@import url(../blocks/form/__item/_el/form__item_el_link.css);
-@import url(../blocks/form/__button/_type/form__button_type_submit.css);
+@import url(../blocks/form/__item/_el/form__item_el_link.css); */
+@import url(../blocks/form/__submit/form__submit.css);
 @import url(../blocks/exit-button/exit-button.css);
 @import url(../blocks/popup/_type/popup_type_image.css);
 @import url(../blocks/popup/__content/popup__content.css);

@@ -2,6 +2,7 @@
   margin: 0 auto;
   padding: 34px 0 37px;
   width: calc(100% - 72px);
+  min-height: 259px;
   display: flex;
   flex-direction: column;
 }

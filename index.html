@@ -49,29 +49,43 @@
     </div>
   </section>
   <section class="popup popup_type_edit">
-    <form class="form edit-form" action="#" name="edit-form">
+    <form class="form edit-form" action="#" name="edit-form" novalidate>
       <div class="form__content">
         <h2 class="form__title">Редактировать профиль</h2>
-        <input class="form__item form__item_el_name" type="text" name="username" placeholder="Имя">
-        <input class="form__item form__item_el_description" type="text" name="user-info"
-          placeholder="Расскажите о себе">
-        <button type="submit" class="form__button form__button_type_submit">Сохранить</button>
-        <button type="button" class="form__button form__button_type_exit exit-button"></button>
+        <label class="form__field form__field_el_name">
+          <input class="form__item form__item_el_name" id="name-input" type="text" name="username" placeholder="Имя"
+            minlength="2" maxlength="40" required>
+          <span class="name-input-error form__item-error"></span>
+        </label>
+        <label class="form__field form__field_el_description">
+          <input class="form__item form__item_el_description" id="description-input" type="text" name="user-info"
+            placeholder="Расскажите о себе" minlength="2" maxlength="200" required>
+          <span class="description-input-error form__item-error"></span>
+        </label>
+        <button type="submit" class="form__submit">Сохранить</button>
+        <button type="button" class="form__exit exit-button"></button>
       </div>
     </form>
   </section>
   <section class="popup popup_type_add">
-    <form class="form add-form" action="#" name="add-form">
+    <form class="form add-form" action="#" name="add-form" novalidate>
       <div class="form__content">
         <h2 class="form__title">Новое место</h2>
-        <input class="form__item form__item_el_place" type="text" name="place" placeholder="Название">
-        <input class="form__item form__item_el_link" type="url" name="place-link" placeholder="Ссылка на картинку">
-        <button type="submit" class="form__button form__button_type_submit">Создать</button>
-        <button type="button" class="form__button form__button_type_exit exit-button"></button>
+        <label class="form__field form__field_el_place">
+          <input class="form__item form__item_el_place" id="place-input" type="text" name="place" placeholder="Название" minlength="2" maxlength="30" required>
+          <span class="place-input-error form__item-error"></span>
+        </label>
+        <label class="form__field form__field_el_link">
+          <input class="form__item form__item_el_link" id="url-input" type="url" name="place-link" placeholder="Ссылка на картинку" required>
+          <span class="url-input-error form__item-error"></span>
+        </label>
+        <button type="submit" class="form__submit">Создать</button>
+        <button type="button" class="form__exit exit-button"></button>
       </div>
     </form>
   </section>
   <script src="./scripts/cards.js"></script>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 

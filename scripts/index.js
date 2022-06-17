@@ -10,16 +10,16 @@ const cardTemplateElement = document.querySelector('.card').content.querySelecto
 
 const popupAdd = document.querySelector('.popup_type_add');                              // Попап добавления
 const formElementAdd = document.querySelector('.add-form');                              // форма добавления
-const placeInputElement = popupAdd.querySelector('.form__item_el_place');                 // инпут место
+const placeInputElement = popupAdd.querySelector('.form__item_el_place');                // инпут место
 const linkInputElement = popupAdd.querySelector('.form__item_el_link');                  // инпут ссылка
-const popupAddCloseButton = popupAdd.querySelector('.form__button_type_exit');            // крестик форма добавления
+const popupAddCloseButton = popupAdd.querySelector('.form__exit');                       // крестик форма добавления
 
 const popupEdit = document.querySelector('.popup_type_edit');                            // попап редактирования
 const formElementEdit = document.querySelector('.edit-form');                            // форма редактирования
 
 const nameInputElement = document.querySelector('.form__item_el_name');                  // инпут имя
 const infoInputlement = document.querySelector('.form__item_el_description');            // инпут описание
-const popupEditCloseButton = popupEdit.querySelector('.form__button_type_exit');         // крестик форма редактирования
+const popupEditCloseButton = popupEdit.querySelector('.form__exit');                     // крестик форма редактирования
 
 const imagePopup = document.querySelector('.popup_type_image');                          // попап с картинкой
 const imagePopupCloseButton = imagePopup.querySelector('.popup__button');                // крестик попап с картинкой
