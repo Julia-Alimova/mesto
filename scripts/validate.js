@@ -1,17 +1,11 @@
-// const formElement = document.querySelector('.form');                     // форма
-// const inputList = Array.from.document.querySelectorAll('.form__item');   // массив инпутов
-// const formInput = formElement.querySelector('.form__item');              // инпут
-// const formError = formElement.querySelector(`.${formInput.id}-error`);   // спан ошибки
-
 const dataElement = {
   formSelector: '.form',
   inputSelector: '.form__item',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'form__button_disabled',
-  inputErrorClass: 'form__button_type_error',
-  errorClass: 'form__button_visible'
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_inactive',
+  inputErrorClass: 'form__item_type_error',
+  errorClass: 'form__item-error_active'
 }
-
 
 const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll('.form'));
@@ -75,9 +69,23 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('form__submit_inactive');
+    setDisableBtn(buttonElement);
   } else {
     buttonElement.classList.remove('form__submit_inactive');
+    removeDisabledBtn(buttonElement);
   }
 }
 
+// Функция, которая делает неактивной кнопку
+const setDisableBtn = (btn) => {
+  btn.setAttribute('disabled', true)
+}
+
+// Функция, которая делает кнопку автивной
+const removeDisabledBtn = (btn) => {
+  btn.removeAttribute('disabled')
+}
+
 enableValidation();
+
+

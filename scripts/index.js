@@ -7,6 +7,7 @@ const cards = document.querySelector('.cards');                                 
 
 const cardTemplateElement = document.querySelector('.card').content.querySelector('.card__element'); // темплейт
 
+const popupIsOpenClassName = 'popup_opened';
 
 const popupAdd = document.querySelector('.popup_type_add');                              // Попап добавления
 const formElementAdd = document.querySelector('.add-form');                              // форма добавления
@@ -87,10 +88,12 @@ function deleteCard(evt) {
 // Открытие попапов
 function openPopup(poupElement) {
   poupElement.classList.add('popup_opened')
+  document.addEventListener('keydown', keyHandler);
 };
 
 // Закрытие попапов
-function closePopup(poupElement) {
+function closePopup() {
+  const poupElement = document.querySelector('.' + popupIsOpenClassName)
   poupElement.classList.remove('popup_opened')
 };
 
@@ -109,11 +112,26 @@ function addCardListener(deleteItem, photoItem, likeItem) {
   likeItem.addEventListener('click', like);
 };
 
+// Функция, которая закрывает попап если клик снаружи
+function detectClickOutside (evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup()
+}
+};
+
+// Функция, которая закрывает попап по клику на esc
+function keyHandler(evt) {
+  if (evt.key === 'Escape' || evt.key === 'Esc') {
+    closePopup()
+  }
+};
+
 // открытие формы редактирования
 buttonEdit.addEventListener('click', () => {
   openPopup(popupEdit);
   nameInputElement.value = userName.textContent;
   infoInputlement.value = userInfo.textContent;
+  removeDisabledBtn(popupEdit.querySelector('.form__submit'));
 });
 
 // открытие формы добавления
@@ -135,6 +153,11 @@ popupAddCloseButton.addEventListener('click', () => {
 imagePopupCloseButton.addEventListener('click', () => {
   closePopup(imagePopup)
 });
+
+// Закрытие попапа по клику снаружи
+document.body.addEventListener('click', function (evt) {
+  detectClickOutside(evt)
+  });
 
 // сабмит формы редактирования
 formElementEdit.addEventListener('submit', submitPopup);
