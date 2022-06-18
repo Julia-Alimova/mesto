@@ -94,7 +94,7 @@ function openPopup(poupElement) {
 // Закрытие попапов
 function closePopup() {
   const poupElement = document.querySelector('.' + popupIsOpenClassName)
-  document.addEventListener('keydown', closeByEscape);
+  document.removeEventListener('keydown', closeByEscape);
   poupElement.classList.remove('popup_opened')
 };
 
@@ -113,18 +113,17 @@ function addCardListener(deleteItem, photoItem, likeItem) {
   likeItem.addEventListener('click', like);
 };
 
-// Очистка формы
-function clearPopup () {
-  const openedPopup = document.querySelector('.' + popupIsOpenClassName)
-  if (openedPopup.firstElementChild.classList.contains('form')) {
-    openedPopup.querySelector('.form').reset();
-  }
-}
+// // Очистка формы
+// function clearPopup () {
+//   const openedPopup = document.querySelector('.' + popupIsOpenClassName)
+//   // if (openedPopup.firstElementChild.classList.contains('form')) {
+//     openedPopup.querySelector('.form').reset();
+//   }
+// // }
 
 // Функция, которая закрывает попап если клик снаружи
 function detectClickOutside (evt) {
   if (evt.target.classList.contains('popup')) {
-    clearPopup()
     closePopup()
 }
 };
@@ -132,7 +131,6 @@ function detectClickOutside (evt) {
 // Функция, которая закрывает попап по клику на esc
 function closeByEscape(evt) {
   if (evt.key === 'Escape' || evt.key === 'Esc') {
-    clearPopup()
     closePopup()
   }
 };
@@ -150,6 +148,7 @@ buttonEdit.addEventListener('click', () => {
 buttonAdd.addEventListener('click', () => {
   clearErrors(popupAdd, settings)
   setDisabledBtn(popupAdd.querySelector('.form__submit'))
+  formElementAdd.reset()
   openPopup(popupAdd);
 });
 
@@ -160,7 +159,6 @@ popupEditCloseButton.addEventListener('click', () => {
 
 // закрытие формы добавления
 popupAddCloseButton.addEventListener('click', () => {
-  clearPopup()
   closePopup()
 });
 

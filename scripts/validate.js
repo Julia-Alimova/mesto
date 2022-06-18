@@ -8,8 +8,8 @@ const settings = {
 }
 
 // включение валидации
-const enableValidation = (element) => {
-  const formList = Array.from(document.querySelectorAll(element.formSelector));
+const enableValidation = ({formSelector, ...rest}) => {
+  const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach(function (formElement) {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
@@ -40,7 +40,7 @@ const setEventListener = (formElement, settings) => {
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add();
+  inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(settings.errorClass);
 };

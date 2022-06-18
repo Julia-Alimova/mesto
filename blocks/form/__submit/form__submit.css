@@ -19,6 +19,11 @@
   background-color: #E5E5E5;
 }
 
+.form__submit_inactive:hover {
+opacity: 1;
+}
+
+
 @media screen and (max-width: 767px) {
   .form__submit {
     height: 46px;
