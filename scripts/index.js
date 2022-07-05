@@ -113,14 +113,6 @@ function addCardListener(deleteItem, photoItem, likeItem) {
   likeItem.addEventListener('click', like);
 };
 
-// // Очистка формы
-// function clearPopup () {
-//   const openedPopup = document.querySelector('.' + popupIsOpenClassName)
-//   // if (openedPopup.firstElementChild.classList.contains('form')) {
-//     openedPopup.querySelector('.form').reset();
-//   }
-// // }
-
 // Функция, которая закрывает попап если клик снаружи
 function detectClickOutside (evt) {
   if (evt.target.classList.contains('popup')) {
