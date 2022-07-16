@@ -1,11 +1,12 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
 const userName = document.querySelector('.profile__name');                               // имя пользователя
 const userInfo = document.querySelector('.profile__description');                        // описание
 const buttonEdit = document.querySelector('.profile__edit-button');                      // кнопка редактирования
 const buttonAdd = document.querySelector('.profile__add-button');                        // кнопка добавления
 
-const cards = document.querySelector('.cards');                                          // место для карточек
-
-const cardTemplateElement = document.querySelector('.card').content.querySelector('.card__element'); // темплейт
+const sectionWithCards = document.querySelector('.cards');                               // место для карточек
 
 const popupIsOpenClassName = 'popup_opened';
 
@@ -27,62 +28,52 @@ const imagePopupCloseButton = imagePopup.querySelector('.popup__button');       
 const previewImage = imagePopup.querySelector('.popup__photo');                          // увеличенная картинка
 const previewTitle = imagePopup.querySelector('.popup__title');                          // подпись к увеличенной картинке
 
-const getCardByEvent = evt => evt.currentTarget.closest('.card__element');
+const config = {
+  sectionCards: '.cards',
+  template: '.card',
+  cardElement: '.card__element',
+  image: '.card__photo',
+  title: '.card__title',
+  likeButton: '.card__like',
+  deleteButton: '.card__delete'
+}
 
-// создание карточки по ссылке и имени
+const settings = {
+  formSelector: '.form',
+  inputSelector: '.form__item',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_inactive',
+  inputErrorClass: 'form__item_type_error',
+  errorClass: 'form__item-error_active'
+}
+
+// создание карточки
 function createCard(name, link) {
-  const cardElement = cardTemplateElement.cloneNode(true); // карточка
-  const deleteItem = cardElement.querySelector('.card__delete');
-  const likeItem = cardElement.querySelector('.card__photo');
-  const photoItem = cardElement.querySelector('.card__like');
-  cardElement.querySelector('.card__photo').src = link;
-  cardElement.querySelector('.card__photo').alt = name;
-  cardElement.querySelector('.card__title').textContent = name;
-  addCardListener(deleteItem, likeItem, photoItem);
-  return cardElement;
-};
+  const card = new Card(config, '.card', name, link, openPreview);
+  return card.generateCard(sectionWithCards)
+}
 
-// добавить карточку в конец
-function renderCard(name, link) {
-  const card = createCard(name, link);
-  cards.prepend(card);
-};
+// вывод карточек из массива
+initialCards.reverse().forEach((item) => {
+  createCard(item.name, item.link);
+})
 
-// перебор элементов массива, добавление на страницу
-initialCards.reverse().forEach(function (element) {
-  renderCard(element.name, element.link);
-});
-
-
-// Добавление карточки с введенными в формы данными
+// добавление карточки из формы
 function handleSubmit(evt) {
   evt.preventDefault();
-  elementLink = linkInputElement.value;
-  elementName = placeInputElement.value;
-  renderCard(elementName, elementLink);
+  let elementName = placeInputElement.value;
+  let elementLink = linkInputElement.value;
+  createCard(elementName, elementLink);
   formElementAdd.reset();
   closePopup(popupAdd);
 };
 
 // открытие попапа с карточкой
-function openCard(evt) {
-  const cardItem = getCardByEvent(evt);
-  const duplicateCard = cardItem.cloneNode(true);
-  previewImage.src = duplicateCard.querySelector('.card__photo').src;
-  previewImage.alt = duplicateCard.querySelector('.card__title').textContent;
-  previewTitle.textContent = duplicateCard.querySelector('.card__title').textContent;
+function openPreview(name, link) {
+  previewImage.src = link;
+  previewImage.alt = name;
+  previewTitle.textContent = name;
   openPopup(imagePopup);
-};
-
-// лайк
-function like(evt) {
-  evt.target.classList.toggle('card__like_type_active');
-};
-
-// Удаление карточки
-function deleteCard(evt) {
-  const cardElement = getCardByEvent(evt)
-  cardElement.remove();
 };
 
 // Открытие попапов
@@ -106,18 +97,11 @@ function submitPopup(evt) {
   closePopup()
 };
 
-// Добавление слушателя события на удаление, открытие картинки, лайк
-function addCardListener(deleteItem, photoItem, likeItem) {
-  deleteItem.addEventListener('click', deleteCard);
-  photoItem.addEventListener('click', openCard);
-  likeItem.addEventListener('click', like);
-};
-
 // Функция, которая закрывает попап если клик снаружи
-function detectClickOutside (evt) {
+function detectClickOutside(evt) {
   if (evt.target.classList.contains('popup')) {
     closePopup()
-}
+  }
 };
 
 // Функция, которая закрывает попап по клику на esc
@@ -132,16 +116,14 @@ buttonEdit.addEventListener('click', () => {
   openPopup(popupEdit);
   nameInputElement.value = userName.textContent;
   infoInputlement.value = userInfo.textContent;
-  removeDisabledBtn(popupEdit.querySelector('.form__submit'));
-  clearErrors(popupEdit, settings)
+  formEditValidator.clearErrors();
 });
 
 // открытие формы добавления
 buttonAdd.addEventListener('click', () => {
-  clearErrors(popupAdd, settings)
-  setDisabledBtn(popupAdd.querySelector('.form__submit'))
   formElementAdd.reset()
   openPopup(popupAdd);
+  formAddValidator.clearErrors();
 });
 
 // закрытие формы редактирования
@@ -162,10 +144,15 @@ imagePopupCloseButton.addEventListener('click', () => {
 // Закрытие попапа по клику снаружи
 document.body.addEventListener('click', function (evt) {
   detectClickOutside(evt)
-  });
+});
 
 // сабмит формы редактирования
 formElementEdit.addEventListener('submit', submitPopup);
 
 // сабмит формы добавления
 formElementAdd.addEventListener('submit', handleSubmit);
+
+const formAddValidator = new FormValidator(settings, formElementAdd);
+formAddValidator.enableValidation();
+const formEditValidator = new FormValidator(settings, formElementEdit);
+formEditValidator.enableValidation();
