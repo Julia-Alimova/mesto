@@ -8,23 +8,22 @@ const buttonAdd = document.querySelector('.profile__add-button');               
 
 const sectionWithCards = document.querySelector('.cards');                               // место для карточек
 
+const popups = document.querySelectorAll('.popup')                                       // попапы
+
 const popupIsOpenClassName = 'popup_opened';
 
 const popupAdd = document.querySelector('.popup_type_add');                              // Попап добавления
 const formElementAdd = document.querySelector('.add-form');                              // форма добавления
 const placeInputElement = popupAdd.querySelector('.form__item_el_place');                // инпут место
 const linkInputElement = popupAdd.querySelector('.form__item_el_link');                  // инпут ссылка
-const popupAddCloseButton = popupAdd.querySelector('.form__exit');                       // крестик форма добавления
 
 const popupEdit = document.querySelector('.popup_type_edit');                            // попап редактирования
 const formElementEdit = document.querySelector('.edit-form');                            // форма редактирования
 
 const nameInputElement = document.querySelector('.form__item_el_name');                  // инпут имя
 const infoInputlement = document.querySelector('.form__item_el_description');            // инпут описание
-const popupEditCloseButton = popupEdit.querySelector('.form__exit');                     // крестик форма редактирования
 
 const imagePopup = document.querySelector('.popup_type_image');                          // попап с картинкой
-const imagePopupCloseButton = imagePopup.querySelector('.popup__button');                // крестик попап с картинкой
 const previewImage = imagePopup.querySelector('.popup__photo');                          // увеличенная картинка
 const previewTitle = imagePopup.querySelector('.popup__title');                          // подпись к увеличенной картинке
 
@@ -61,8 +60,8 @@ initialCards.reverse().forEach((item) => {
 // добавление карточки из формы
 function handleSubmit(evt) {
   evt.preventDefault();
-  let elementName = placeInputElement.value;
-  let elementLink = linkInputElement.value;
+  const elementName = placeInputElement.value;
+  const elementLink = linkInputElement.value;
   createCard(elementName, elementLink);
   formElementAdd.reset();
   closePopup(popupAdd);
@@ -88,6 +87,18 @@ function closePopup() {
   document.removeEventListener('keydown', closeByEscape);
   poupElement.classList.remove('popup_opened')
 };
+
+// закрытие всех попапов через перебор массива
+popups.forEach((popupElement) => {
+  popupElement.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popupElement);
+    }
+    if (evt.target.classList.contains('exit-button')) {
+      closePopup(popupElement);
+    }
+  })
+})
 
 // Сабмит формы редактирования
 function submitPopup(evt) {
@@ -126,21 +137,6 @@ buttonAdd.addEventListener('click', () => {
   formAddValidator.clearErrors();
 });
 
-// закрытие формы редактирования
-popupEditCloseButton.addEventListener('click', () => {
-  closePopup()
-});
-
-// закрытие формы добавления
-popupAddCloseButton.addEventListener('click', () => {
-  closePopup()
-});
-
-// закрытие попапа с картинкой
-imagePopupCloseButton.addEventListener('click', () => {
-  closePopup()
-});
-
 // Закрытие попапа по клику снаружи
 document.body.addEventListener('click', function (evt) {
   detectClickOutside(evt)
@@ -152,7 +148,7 @@ formElementEdit.addEventListener('submit', submitPopup);
 // сабмит формы добавления
 formElementAdd.addEventListener('submit', handleSubmit);
 
-const formAddValidator = new FormValidator(settings, formElementAdd);
-formAddValidator.enableValidation();
-const formEditValidator = new FormValidator(settings, formElementEdit);
-formEditValidator.enableValidation();
+  const formAddValidator = new FormValidator(settings, formElementAdd);
+  formAddValidator.enableValidation();
+  const formEditValidator = new FormValidator(settings, formElementEdit);
+  formEditValidator.enableValidation();
